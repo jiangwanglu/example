@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>抄表首页</title>
+	<meta name="renderer" content="webkit|ie-comp|ie-stand" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+	<link rel="stylesheet" href="/Meter/layui/css/layui.css"  media="all" />
+	<link rel="stylesheet" href="/Meter/css/checkbix.min.css" />
+	<script type="text/javascript" src="/Meter/js/echarts.js"></script>
+	<script type="text/javascript" src="/Meter/js/jquery.js"></script>
+	<script type="text/javascript" src="/Meter/layui/layui.js"></script>
+	<script src="/Meter/js/checkbix.min.js"></script>
+	<style>
+		html,body{width:100%;height:100%}
+		body{background:#B0E0E6}
+		#top{width:98%;height:48%;margin:1%}
+		#topleft{width:26%;height:100%;background:#FFFFFF;float:left;}
+		#topright{width:73%;height:100%;background:#FFFFFF;float:right;}
+		#buttom{width:98%;height:48%;margin:1%;background:#FFFFFF;margin:1%;}
+		#topleftleft{width:53%;height:100%;background:#FFFFFF;float:left}
+		#toprightright{width:47%;height:100%;float:right;}
+	</style>
+	<script type="text/javascript">
+		$(function(){
+			toprightright();
+		});
+		
+		function toprightright(){
+			var myChart = echarts.init(document.getElementById('toprightright'));
+		    var option = {
+				tooltip : {
+					trigger: 'item',
+					formatter: "{a} <br/>{b} : {c} ({d}%)",
+				},
+				color:['#8fc31f','#f35833','#00ccff','#ffcc00'],
+				legend: {
+					orient: 'vertical',
+					x: 'right',
+					data: ['事故照明','公共照明','空调','强电'],
+				},
+				series : [
+					{
+						name: '签到比例分析',
+						type: 'pie',
+						radius : '65%',
+						center: ['50%', '50%'],
+						data:[
+							{value:335, name:'事故照明'},
+							{value:310, name:'公共照明'},
+							{value:234, name:'空调'},
+							{value:135, name:'强电'},
+						],
+						itemStyle: {
+							emphasis: {
+								shadowBlur: 10,
+								shadowOffsetX: 0,
+								shadowColor: 'rgba(0, 0, 0, 0.5)',
+							}
+						},
+						itemStyle: {
+							normal: {
+								label:{ 
+									show: true, 
+									formatter: '{b}: {c}({d}%)',
+								}
+							},
+							labelLine :{show:true},
+						}
+					}
+				]
+			};
+			myChart.setOption(option);
+			topleftleft();
+		}
+		function topleftleft(){
+			var myChart = echarts.init(document.getElementById('topleftleft'));
+		    var option = {
+				tooltip : {
+					trigger: 'item',
+					formatter: "{a} <br/>{b} : {c} ({d}%)"
+				},
+				color:['#00ccff','#ffcc00'],
+				legend: {
+					orient: 'vertical',
+					x: 'right',
+					data: ['公共用电','业户用电'],
+				},
+				series : [
+					{
+						name: '签到比例分析',
+						type: 'pie',
+						radius : '65%',
+						center: ['50%', '50%'],
+						data:[
+							{value:335, name:'公共用电'},
+							{value:234, name:'业户用电'},
+						],
+						itemStyle: {
+							emphasis: {
+								shadowBlur: 10,
+								shadowOffsetX: 0,
+								shadowColor: 'rgba(0, 0, 0, 0.5)'
+							}
+						},
+						itemStyle: {
+							normal: {
+								label:{ 
+									show: true, 
+									formatter: '{b} : {c} °度 ({d}%)' 
+								}
+							},
+							labelLine :{show:true}
+						}
+					}
+				]
+			};
+			myChart.setOption(option);
+			buttom();
+		}
+		
+		
+		function buttom(){
+			var myChart = echarts.init(document.getElementById('buttom'));
+			var option = {
+				backgroundColor: '#00265f',
+				tooltip: {
+					trigger: 'axis',
+					axisPointer: {
+						type: 'shadow'
+					}
+				},
+				legend: {
+					data: ['本月用电量', '去年同期用电量'],
+					align: 'right',
+					right: 10,
+					textStyle: {
+						color: "#fff"
+					},
+					itemWidth: 10,
+					itemHeight: 10,
+					itemGap: 35
+				},
+				grid: {
+					left: '3%',
+					right: '4%',
+					bottom: '3%',
+					containLabel: true
+				},
+				xAxis: [{
+					type: 'category',
+					data: ['1月',
+						'2月',
+						'3月',
+						'4月',
+						'5月',
+						'6月',
+						'7月',
+						'8月',
+						'9月',
+						'10月 ',
+						'11月',
+						'12月',
+					],
+					axisLine: {
+						show: true,
+						lineStyle: {
+							color: "#063374",
+							width: 1,
+							type: "solid"
+						}
+					},
+					axisTick: {
+						show: false,
+					},
+					axisLabel: {
+						show: true,
+						textStyle: {
+							color: "#00c7ff",
+						}
+					},
+				}],
+				yAxis: [{
+					type: 'value',
+					axisLabel: {
+						formatter: '{value} 度'
+					},
+					axisTick: {
+						show: false,
+					},
+					axisLine: {
+						show: false,
+						lineStyle: {
+							color: "#00c7ff",
+							width: 1,
+							type: "solid"
+						},
+					},
+					splitLine: {
+						lineStyle: {
+							color: "#063374",
+						}
+					}
+				}],
+				series: [{
+					name: '本月用电量',
+					type: 'bar',
+					data: [50, 70, 60, 61, 75, 87, 60, 62, 86, 46,80,46],
+					barWidth: 13,
+					barGap: 1,
+					itemStyle: {
+						normal: {
+							color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+								offset: 0,
+								color: '#00da9c'
+							}, {
+								offset: 1,
+								color: '#007a55'
+							}]),
+							opacity: 1,
+						}
+					}
+				}, {
+					name: '去年同期用电量',
+					type: 'bar',
+					data: [70, 48, 73, 68, 53, 47, 50, 72, 96, 86,67,81],
+					barWidth: 13,
+					barGap: 1,
+					itemStyle: {
+						normal: {
+							color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+								offset: 0,
+								color: '#c4e300'
+							}, {
+								offset: 1,
+								color: '#728400'
+							}]),
+							opacity: 1,
+						}
+					}
+				}]
+			};
+			myChart.setOption(option);
+		}
+		
+	</script>
+</head>
+<body>
+	<div id="top">
+		<div id="topleft">
+			<table  style="margin:20px">
+				<tr>
+					<td><font size="5" style="font-weight:bold" >总用电量:</font></td>
+					<td><font size="4" style="margin-left:50px;">485564</font></td>
+					<td><font size="5" style="margin-left:20px;font-weight:bold">KWH</font></td>
+				</tr>
+				<tr>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td><font size="5" style="font-weight:bold">总电费:</font></td>
+					<td><font size="4" style="margin-left:50px">485564</font></td>
+					<td><font size="5" style="margin-left:20px;font-weight:bold">RMB</font></td>
+				</tr>
+				<tr>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td><font size="5" style="font-weight:bold">总用水量:</font></td>
+					<td><font size="4" style="margin-left:50px">485564</font></td>
+					<td><font size="5" style="margin-left:20px;font-weight:bold">T</font></td>
+				</tr>
+				<tr>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td><font size="5" style="font-weight:bold">总水费:</font></td>
+					<td><font size="4" style="margin-left:50px">485564</font></td>
+					<td><font size="5" style="margin-left:20px;font-weight:bold">RMB</font></td>
+				</tr>
+			</table>
+		</div>
+		<div id="topright">
+			<div id="topleftleft">
+			
+			</div>
+			<div id="toprightright">
+			
+			</div>
+		</div>
+	</div>
+	
+	<div id="buttom">
+	
+	</div>
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>收费第二层菜单</title>
+<link rel="stylesheet" href="/Meter/layui/css/layui.css"  media="all" />
+<link rel="stylesheet" type="text/css" href="/Meter/jquery-easyui/themes/default/easyui.css" />
+<link rel="stylesheet" type="text/css" href="/Meter/jquery-easyui/themes/icon.css" />
+<link rel="stylesheet" type="text/css" href="/Meter/jquery-easyui/demo/demo.css" />
+<script type="text/javascript" src="/Meter/jquery-easyui/jquery.min.js"></script>
+<script type="text/javascript" src="/Meter/jquery-easyui/jquery.easyui.min.js"></script>
+<script src="/Meter/layui/layui.js" charset="utf-8"></script>
+
+<style>
+	html,body{width:98.9%;height:80%;margin:0%}
+	body{background:#FFFFFF}
+	#left{width:39%;height:97%;float:left;background:#FFFFFF}
+	#right{width:59%;height:97%;float:right;background:#FFFFFF;margin-right:1%}
+</style>
+</head>
+<body>
+	<div id="left">
+		<table style="width:100%;height:10%">
+			<tr>
+				<th><font size="6">仪表种类</font></th>
+				<th><input type="image" src="/Meter/images/新增.png" onclick="$('#w').window('open')"></input></th>
+			</tr>
+		</table>
+		<table id="demo" lay-filter="test"></table>
+	</div>
+	<div id="right">
+		<table style="width:100%;height:10%">
+			<tr>
+				<th><font size="6">仪表箱</font></th>
+				<th><input type="image" src="/Meter/images/新增.png" onclick="$('#w1').window('open')"></input></th>
+			</tr>
+		</table>
+		<table id="demo1"  lay-filter="test"></table>
+		<script type="text/html" id="checkboxTpl">
+		  <input type="checkbox" name="lock" value="{{d.id}}" title="锁定" lay-filter="lockDemo"  />
+		</script>
+	</div>
+	
+	<div id="w" class="easyui-window" title="增加仪表种类" data-options="modal:true,closed:true,iconCls:'icon-save'" style="width:60%;height:60%;padding:10px;">
+		<table style="width:100%;height:100%">
+			<tr>
+				<th align="center"><font size="4">代码：</font></th>
+				<th align="center"><input type="text" name="title" required="required" lay-verify="required" placeholder="请输入代码" autocomplete="off" class="layui-input" style="width:50%"></input></th>
+				<th align="center"><font size="4">名称：</font></th>
+				<th align="center"><input type="text" name="title" required="required" lay-verify="required" placeholder="请输入名称" autocomplete="off" class="layui-input" style="width:50%"></input></th>
+			</tr>
+			<tr>
+				<th align="center"><font size="4">序号：</font></th>
+				<th align="center"><input type="text" name="title" required="required" lay-verify="required" placeholder="请输入序号" autocomplete="off" class="layui-input" style="width:50%"></input></th>
+				<th align="center"><font size="4">组织机构：</font></th>
+				<th align="center"><input type="text" name="title" required="required" lay-verify="required" placeholder="请输入机构" autocomplete="off" class="layui-input" style="width:50%"></input></th>
+			</tr>
+			<tr>
+				<th align="center"><font size="4">条码：</font></th>
+				<th align="center" colspan="3"><input type="text" name="title" required="required" lay-verify="required" placeholder="请输入条码" autocomplete="off" class="layui-input" style="width:80%"></input></th>
+				<th></th>
+				<th></th>
+			</tr>
+			<tr>
+				<th align="center"><font size="4">位置：</font></th>
+				<th align="center" colspan="3"><input type="text" name="title" required="required" lay-verify="required" placeholder="请输入位置" autocomplete="off" class="layui-input" style="width:80%"></input></th>
+				<th></th>
+				<th></th>
+			</tr>
+			<tr>
+				<th align="center"><font size="4">备注：</font></th>
+				<th align="center"  colspan="3"><input type="text" name="title" required="required" lay-verify="required" placeholder="请输入备注" autocomplete="off" class="layui-input" style="width:80%"></input></th>
+				<th></th>
+				<th></th>
+			</tr>
+			<tr>
+				<th align="center" colspan="2">
+					<a class="easyui-linkbutton" data-options="iconCls:'icon-ok'" href="javascript:void(0)" onclick="javascript:alert('ok')" style="width:80px">确定</a>
+				</th>
+				<th></th>
+				<th align="center" colspan="2">
+					<a class="easyui-linkbutton" data-options="iconCls:'icon-cancel'" href="javascript:void(0)" onclick="$('#w').window('close')" style="width:80px">返回</a>
+				</th>
+				<th></th>
+			</tr>
+		</table>
+	</div>
+	<div id="w1" class="easyui-window" title="增加仪表箱" data-options="modal:true,closed:true,iconCls:'icon-save'" style="width:60%;height:30%;padding:10px;">
+		<table style="width:100%;height:100%">
+			<tr>
+				<th align="center"><font size="4">代码：</font></th>
+				<th align="center"><input type="text" name="title" required="required" lay-verify="required" placeholder="请输入代码" autocomplete="off" class="layui-input" style="width:60%"></input></th>
+				<th align="center"><font size="4">名称：</font></th>
+				<th align="center"><input type="text" name="title" required="required" lay-verify="required" placeholder="请输入名称" autocomplete="off" class="layui-input" style="width:60%"></input></th>
+			</tr>
+			<tr>
+				<th align="center"><font size="4">名称：</font></th>
+				<th colspan="3"><input type="text" name="title" required="required" lay-verify="required" placeholder="请输入名称" autocomplete="off" class="layui-input" style="width:60%;margin-left:9%"></input></th>
+				<th></th>
+				<th></th>
+			</tr>
+			<tr>
+				<th align="center" colspan="2">
+					<a class="easyui-linkbutton" data-options="iconCls:'icon-ok'" href="javascript:void(0)" onclick="javascript:alert('ok')" style="width:80px">确定</a>
+				</th>
+				<th></th>
+				<th align="center" colspan="2">
+					<a class="easyui-linkbutton" data-options="iconCls:'icon-cancel'" href="javascript:void(0)" onclick="$('#w1').window('close')" style="width:80px">返回</a>
+				</th>
+				<th></th>
+			</tr>
+		</table>
+	</div>
+<script>
+	layui.use(['table'], function(){
+		var table = layui.table
+		,form = layui.form;
+		  //第一个实例
+		  table.render({
+			elem: '#demo'
+			,height: 'full'
+			,size: 'lg'
+			,data:[{id:"02",username:"电表",sex:"啦啦"}]
+			,cols: [[ //表头
+			  {field: 'id', title: '代码',align:"center"}
+			  ,{field: 'username', title: '名称',align:"center"}
+			  ,{field: 'sex', title: '备注',align:"center"}
+			]]
+		  });
+		  
+		  //第一个实例
+		  table.render({
+			elem: '#demo1'
+			,height: 'full+'
+			,size: 'lg'
+			,data:[{id:"03",username:"3号电表箱",b:"联合广场管理处"}]
+			,cols: [[ //表头
+			  {field: 'id', title: '代码',align:"center"}
+			  ,{field: 'username', title: '名称',align:"center"}
+			  ,{field: 'sex', title: '序号',align:"center"}
+			  ,{field: 'a', title: '条码',align:"center"}
+			  ,{field: 'b', title: '组织机构',align:"center"}
+			  ,{field: 'c', title: '位置',align:"center"}
+			  ,{field: 'd', title: '备注',align:"center"}
+			  ,{field: 'f', title: '操作',align:"center",templet: '#checkboxTpl', unresize: true}
+			]]
+		  });
+			//监听锁定操作
+		  form.on('checkbox(lockDemo)', function(obj){
+			layer.tips(this.value + ' ' + this.name + '：'+ obj.elem.checked, obj.othis);
+		  });
+	});
+</script>
+</body>
+</html>

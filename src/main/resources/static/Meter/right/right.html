@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>抄表首页</title>
+	<meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<link rel="stylesheet" href="../layui/css/layui.css"  media="all">
+	<link rel="stylesheet" href="../css/checkbix.min.css">
+	<link rel="stylesheet" type="text/css" href="../css/style2.css" />
+	<link rel="stylesheet" href="../select/example.css" type="text/css">
+	<link rel="stylesheet" href="../select/css/dropkick.css" type="text/css">
+	<script type="text/javascript" src="../js/echarts.js"></script>
+	<script type="text/javascript" src="../js/jquery.js"></script>
+	<script type="text/javascript" src="../layui/layui.js"></script>
+	<script src="../js/checkbix.min.js"></script>
+	<script src="../js/jquery-2.1.1.min.js"></script>
+	<script src="../select/jquery.dropkick-min.js"></script>
+	<style>  
+		html,body{width:100%;height:100%}
+		body{background:#B0E0E6}
+		div{background:	#FFFFFF}
+		#top{width:50%;height:6%;margin-left:25%}
+		#topleft{width:48%;height:95%;margin-top:10px;margin-left:20px;float:left;}
+		#topright{width:48%;height:95%;margin-top:10px;margin-right:20px;float:right;}
+		#buttomleft{width:48%;height:45%;float:left}
+		#buttomright{width:48%;height:43%;float:right;margin-right:19px;margin-top:20px}
+		#echar{width:50%;height:100%;float:right;}
+		#buttomleft{width:48%;height:43%;float:left;margin-left:20px;margin-top:20px}
+		#ech{width:45%;height:100%;float:left;}
+		#topleft1{width:98%;height:45%;margin-top:20px;margin-left:20px;}
+		#year,#month{width:50px;height:40px;border-radius:10px;margin-top:2px}
+		#top1{width:50%;height:50px;float:left;}
+		table.gridtable {
+			font-family: verdana,arial,sans-serif;
+			font-size:11px;
+			color:#333333;
+			border-width: 1px;
+			border-color: #666666;
+			border-collapse: collapse;
+			margin-top:10px;
+			align:center;
+		}
+		table.gridtable th {
+			width:150px;
+			border-width: 1px;
+			padding: 8px;
+			border-style: solid;
+			border-color: #666666;
+			background-color: #dedede;
+		}
+		table.gridtable td {
+			border-width: 1px;
+			padding: 8px;
+			border-style: solid;
+			border-color: #666666;
+			background-color: #ffffff;
+			text-align:center;
+		}
+	</style>
+	<script>
+	$(function () {
+		$("#year").val(new Date().getFullYear()+" 年");
+		$("#month").val(new Date().getMonth() + 1 +" 月");
+		topright();
+	});
+
+	function topright(){
+		var myChart = echarts.init(document.getElementById('echar'));
+		var option = {
+			tooltip : {
+				trigger: 'item',
+				formatter: "{a} <br/>{b} : {d}%"
+			},
+			series : [
+				{
+					name: '类目',
+					type: 'pie',
+					radius : '65%',
+					center: ['50%', '50%'],
+					data:[
+						{value:1959, name:'业户用电',itemStyle: {normal:{color: '#00BEFE'}}},
+						{value:1239, name:'公共用电',itemStyle: {normal:{color: '#FEA44E'}}},
+					],
+					itemStyle: {
+						emphasis: {
+							shadowBlur: 10,
+							shadowOffsetX: 0,
+							shadowColor: 'rgba(0, 0, 0, 0.5)'
+						}
+					}
+				}
+			]
+		};
+		myChart.setOption(option);
+		buttomright();
+	}
+	function buttomright(){
+			var myChart = echarts.init(document.getElementById('buttomright'));
+			var option = {
+				backgroundColor: "#FFFFFF",
+				color: ['#ffd285', '#ff733f', '#ec4863'],
+
+				title: [{
+					text: '总电数',
+					left: '1%',
+					top: '6%',
+					textStyle: {
+						color: '#000000'
+					}
+				}],
+				tooltip: {
+					trigger: 'axis'
+				},
+				legend: {
+					x: 300,
+					top: '7%',
+					textStyle: {
+						color: '#000000',
+					},
+					data: ['本月', '上月', '上年同月']
+				},
+				grid: {
+					left: '1%',
+					right: '5%',
+					top: '16%',
+					bottom: '6%',
+					containLabel: true
+				},
+				toolbox: {
+					"show": false,
+					feature: {
+						saveAsImage: {}
+					}
+				},
+				xAxis: {
+					type: 'category',
+					"axisLine": {
+						lineStyle: {
+							color: '#c0576d'
+						}
+					},
+					"axisTick": {
+						"show": false
+					},
+					axisLabel: {
+						textStyle: {
+							color: '#000000'
+						}
+					},
+					boundaryGap: false,
+					data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+				},
+				yAxis: {
+					"axisLine": {
+						lineStyle: {
+							color: '#000000'
+						}
+					},
+					splitLine: {
+						show: true,
+						lineStyle: {
+							color: '#000000'
+						}
+					},
+					"axisTick": {
+						"show": false
+					},
+					axisLabel: {
+						textStyle: {
+							color: '#000000'
+						}
+					},
+					type: 'value'
+				},
+				series: [{
+					name: '本月',
+					smooth: true,
+					type: 'line',
+					symbolSize: 10,
+					symbol: 'circle',
+					itemStyle:{
+						normal:{
+							lineStyle:{
+								color:'#00BFFF',
+							}
+						}
+					},
+					data: [90, 50, 39, 50, 120, 82, 80]
+				}, {
+					name: '上月',
+					smooth: true,
+					type: 'line',
+					symbolSize: 10,
+					symbol: 'circle',
+					itemStyle:{
+						normal:{
+							color:"#87CEFA",
+							lineStyle:{
+								color:"#00FFFF",
+							}
+						}
+					},
+					data: [70, 50, 50, 87, 90, 80, 70]
+				}, {
+					name: '上年同月',
+					smooth: true,
+					type: 'line',
+					symbolSize: 10,
+					symbol: 'circle',
+					data: [290, 200,20, 132, 15, 200, 90]
+				}]
+			}
+			myChart.setOption(option);
+	}
+	
+			//日期
+		function button(index){
+			if(index == 1){		//年减
+				var value = $("#year").val($("#year").val().split(" ")[0] - 1+" 年");
+			}else if(index == 2){	//年加
+				var val = Date.parse($("#year").val().split(" ")[0]);
+				var newDate=new Date(val);
+				$("#year").val(newDate.getFullYear()+1+" 年");
+			}else if(index == 3){
+				var val = $("#month").val().split(" ")[0];
+				if(val == 1){
+					$("#month").val("12 月");
+				}else{
+					$("#month").val(val - 1 + " 月");
+				}
+			}else if(index == 4){
+				var val = $("#month").val().split(" ")[0];
+				var index = parseInt(val);
+				if(index == 12){
+					$("#month").val("1 月");
+				}else{
+					$("#month").val((index + 1 )+ " 月");
+				}
+			}
+		} 
+	</script>
+</head>
+<body>
+	<div id="top"><!--标题-->
+		<div id="top1">
+			<!--年-->
+			<button class="layui-btn layui-btn-normal layui-btn-sm" style="margin-left:20px" id="buttonyear11" onclick="button(1)"><i class="layui-icon"></i></button>
+			<input type="text"   id="year" readonly="readonly">
+			<button class="layui-btn layui-btn-normal layui-btn-sm" id="buttonyear22" style="margin-right:10px;"><i class="layui-icon"  onclick="button(2)"></i></button>
+			<!--月-->
+			<button class="layui-btn layui-btn-normal layui-btn-sm" style="margin-left:30px" id="buttonmonth11" onclick="button(3)"><i class="layui-icon"></i></button>
+			<input type="text"   id="month" readonly="readonly">
+			<button class="layui-btn layui-btn-normal layui-btn-sm" id="buttonmonth22" onclick="button(4)" style="margin-right:10px;"><i class="layui-icon"></i></button>
+		</div>
+		<div id="dian">
+            <select name="country-nofake" class="default" style="margin:15px">
+              <option value="">电表</option>
+              <option value="AU">水表</option>
+            </select>
+		</div>
+	</div>
+	
+	
+	<div id="topleft1"> <!-- 上面左边 -->
+		<div id="topleft">
+			<center><h1>当月迁入迁出</h1></center>
+			<!-- Table goes in the document BODY -->
+			<table class="gridtable" align="center">
+				<tr>
+					<th>业主</th><th>抄表日期</th><th>抄表度数</th><th>迁入迁出</th>
+				</tr>
+				<tr>
+					<td>招商银行</td><td>2018-05-10</td><td>150KWH</td><td>迁入</td>
+				</tr>
+				<tr>
+					<td>工商银行</td><td>2018-05-11</td><td>500KWH</td><td>迁出</td>
+				</tr>
+			</table>
+		</div>
+		
+		<div id="topright">
+			<div id="ech" >
+				<table style="margin:10px" float="left">
+					<tr>
+						<td colspan="3"><img src="../images/电.png" style="margin:10px"></td>
+					</tr>
+					<tr>
+						<td><font><h1>用电：</h1></font></td>
+						<td><font><h2 style="margin:5px"><u>498464154</u></h2></font></td>
+						<td><font><h2 style="margin:5px">KWH</h2></font></td>
+					</tr>
+					<tr>
+						<td><font><h1>电费：</h1></font></td>
+						<td><font><h2 style="margin:5px"><u>8464146</u></h2></font></td>
+						<td><font><h2 style="margin:5px">RMB</h2></font></td>
+					</tr>
+				</table>
+			</div>
+			<div id="echar">
+			</div>
+		</div>
+	</div>
+	
+	
+	<div id="buttomleft"><!-- 下面左边 -->
+		<center><h1>异常度数</h1></center>
+		<table class="gridtable" align="center" >
+			<tr>
+				<th>业主</th><th>抄表日期</th><th>抄表度数</th><th>超出</th><th>审核</th>
+			</tr>
+			<tr>
+				<td><font style="background:red">招商银行</font></td><td><font style="background:red">2018-05-10</font></td><td><font style="background:red">150KWH</font></td><td><font style="background:red">50KWH</font></td><td><font style="background:red">未审核</font></td>
+			</tr>
+			<tr>
+				<td>工商银行</td><td>2018-05-11</td><td>1250KWH</td><td>20KWH</td><td>已审核</td>
+			</tr>
+		</table>
+	</div>
+	
+	<div id="buttomright"><!-- 下面右边 -->
+	
+	</div>
+</body>
+</html>

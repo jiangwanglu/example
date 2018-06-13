@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>收费第二层菜单</title>
+<link rel="stylesheet" href="../../layui/css/layui.css"  media="all">
+<script src="../../layui/layui.js" charset="utf-8"></script>
+<script src="../../js/jquery.js" charset="utf-8"></script>
+<script src="../../js/jquery-3.2.1.min.js" charset="utf-8"></script>
+
+<style>
+	html,body{width:100%;height:100%;margin:0%}
+	body{background:#B0E0E6}
+	#left{width:48%;height:97%;float:left;background:#FFE4C4;margin:1%}
+	#right{width:48%;height:97%;float:right;background:#FFE4C4;margin:1%}
+</style>
+</head>
+<body>
+	<div id="left">
+		<div id="topleft"  style="width:100%;height:100%;background:#FFE4C4">
+			<table>
+				<tr>
+					<th>
+						<form class="layui-form" action="" style="width:80%;margin-top:25px;margin-left:150px;">
+							<div class="layui-inline">
+								<label class="layui-form-label"><font size="4" >选择设备:</font></label>
+								<div class="layui-inline">
+									<select name="modules" lay-verify="required" lay-search="" style="margin-left:10px">
+										<option value="">直接选择或搜索选择</option>
+										<option value="1">电表1</option>
+										<option value="2">电表2</option>
+										<option value="3">电表3</option>
+										<option value="4">电表4</option>
+									</select>
+								</div>
+							</div>
+						</form>
+					</th>
+				</tr>
+				<tr>
+					<th>
+						<form class="layui-form" action="" style="width:80%;margin-top:25px;margin-left:150px;">
+							<div class="layui-inline">
+								<label class="layui-form-label"><font size="4">计费方式:</font></label>
+								<div class="layui-inline">
+									<select name="modules" lay-verify="required" lay-search="" style="margin-left:10px">
+										<option value="">直接选择或搜索选择</option>
+										<option value="1">单费率</option>
+										<option value="2">阶梯</option>
+										<option value="3">水价</option>
+									</select>
+								</div>
+							</div>
+						</form>
+					</th>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<div id="right">
+		<table  style="width:100%;height:40%;background:#FFE4C4">
+			<tr>
+				<th><font size="4">方案名称：</font></th>
+				<th><input type="text" name="title" required lay-verify="required" placeholder="请输入方案" autocomplete="off" class="layui-input" style="width:30%;margin-left:34%"></th>
+			</tr>
+			<tr>
+				<th><font size="4">方案编号：</font></th>
+				<th><input type="text" name="title" required lay-verify="required" placeholder="请输入编号" autocomplete="off" class="layui-input" style="width:30%;margin-left:34%"></th>
+			</tr>
+			<tr>
+				<th><font size="4">变更日期：</th>
+				<th><input type="text" name="title" required lay-verify="required" placeholder="请输入编号" autocomplete="off" class="layui-input" style="width:30%;margin-left:34%"></th>
+			</tr>
+			<tr>
+				<th><font size="4">开始时间：</th>
+				<th>
+				  <div class="layui-input-inline">
+					<input type="text" class="layui-input" id="test1s" placeholder="开始日期">
+				  </div>
+				</th>
+			</tr>
+			<tr>
+				<th><font size="4">结束时间：</th>
+				<th>
+				  <div class="layui-input-inline">
+					<input type="text" class="layui-input" id="test2s" placeholder="结束日期">
+				  </div>
+				</th>
+			</tr>
+		</table>
+		
+		<div id="buttombuttom" style="width:100%;height:10%;margin-top:20%">
+			<button class="layui-btn layui-btn-warm layui-btn-radius" style="margin-left:20%">暖色按钮</button>
+		</div>
+	</div>
+	<script>
+		layui.use(['table','form','laydate'], function(){
+			//输入框
+			var form = layui.form;
+			
+			//年月范围框
+		var laydate = layui.laydate;
+			  //国际版
+			  laydate.render({
+				elem: '#test1s'
+			  });
+			    //国际版
+			  laydate.render({
+				elem: '#test2s'
+			  });
+		});
+	</script>
+</body>
+</html>

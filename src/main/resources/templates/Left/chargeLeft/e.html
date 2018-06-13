@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>收费第二层菜单</title>
+<link rel="stylesheet" href="/Meter/layui/css/layui.css"  media="all" />
+<script src="/Meter/layui/layui.js" charset="utf-8"></script>
+<script src="/Meter/js/jquery.js" charset="utf-8"></script>
+<script src="Meter/Meter/js/jquery-3.2.1.min.js" charset="utf-8"></script>
+<style>
+	html,body{width:98.9%;height:94%;margin:0%}
+	body{background:#FFFFFF}
+	#top{width:98%;height:20%;margin:1%;background:#FFFFFF}
+	#topleft{width:30%;height:100%;float:left}
+	#topright{width:65%;height:100%;float:right;background:#FFFFFF;}
+	#topleftleft{width:50%;height:100%;float:left;background:#FFFFFF;}
+	#toprightright{width:50%;height:100%;float:right;background:#FFFFFF}
+	#buttom{width:98%;height:73%;background:#FFFFFF;margin:1%}
+</style>
+</head>
+<body>
+	<div id="top">
+		<div id="topleft">
+			<div class="layui-form">
+				<div class="layui-form-item">
+					<div class="layui-inline">
+						<label class="layui-form-label" style="margin-top:20%">选择月份：</label>
+						<div class="layui-input-inline" >
+							<input type="text" class="layui-input" id="test3" placeholder="点击选择月份" style="margin-top:32%"></input>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="topright">
+			<div id="topleftleft">
+				<button class="layui-btn layui-btn-normal layui-btn-radius" style="margin-top:10%"><font size="5">&nbsp;冻&nbsp;结&nbsp;</font></button>
+			</div>
+			<div id="toprightright">
+				<img src="/Meter/images/设置.png" style="margin-top:5%" />
+			</div>
+		</div>
+	</div>
+	<div id="buttom">
+		<table class="layui-hide" id="table"></table>
+	</div>
+<script>
+	layui.use(['laydate','table'],function(){
+		var laydate = layui.laydate;
+		//年月选择器
+		laydate.render({
+			elem: '#test3'
+			,type: 'month'
+		});
+		
+		//表格
+		   var table = layui.table
+			,form = layui.form;
+		    table.render({
+				elem: '#table'
+				,url:'/demo/table/user/'
+				,cellMinWidth: 50
+				,limit:10
+				,height: 680
+				,loading:true
+				,cols: [[
+				  {type:'numbers'}
+				  ,{field:'id', title:'ID', width:100, unresize: true, sort: true}
+				  ,{field:'username', title:'用户', templet: '#usernameTpl'}
+				  ,{field:'city', title:'度数'}
+				  ,{field:'wealth', title: '电费', minWidth:120, }
+				  ,{field:'sex', title:'审核', width:85, templet: '#switchTpl', unresize: true}
+				]]
+				,page: true
+			  })
+	});
+</script>
+</body>
+</html>

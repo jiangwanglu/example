@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>收费第二层菜单</title>
+
+<link rel="stylesheet" href="../../layui/css/layui.css"  media="all">
+<script src="../../layui/layui.js" charset="utf-8"></script>
+<script src="../../js/jquery.js" charset="utf-8"></script>
+<script src="../../js/jquery-3.2.1.min.js" charset="utf-8"></script>
+<style>
+	html,body{width:100%;height:100%;margin:0%}
+	body{background:#B0E0E6}
+	#top{width:60%;height:10%;background:#FFFFFF;margin-top:5%;margin-left:5%}
+	#buttom{width:60%;height:70%;background:#FFFFFF;margin-left:5%}
+</style>
+</head>
+<body>
+	<div id="top">
+		<form class="layui-form" action="" style="margin:10px">
+			<div class="layui-inline">
+				<label class="layui-form-label"  style="margin-top:30px"><font size="4">计费方式:</font></label>
+				<div class="layui-inline" style="margin-top:30px">
+					<select name="modules" lay-verify="required" lay-search="" style="margin-left:10px">
+						<option value="">直接选择或搜索选择</option>
+						<option value="1">单费率</option>
+						<option value="2">阶梯</option>
+						<option value="3">水价</option>
+					</select>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div id="buttom" >
+		<table class="layui-hide" id="test" style="margin:50px"></table>
+	</div>
+<script>
+	layui.use(['table','form','laydate'], function(){
+		//输入框
+		var form = layui.form;
+		//输入框
+		var form = layui.form
+		//表格
+		  var table = layui.table;
+		  table.render({
+			elem: '#test'
+			,url:'/demo/table/user/'
+			,height: 800
+			,page: { //支持传入 laypage 组件的所有参数（某些参数除外，如：jump/elem） - 详见文档
+			  layout: ['limit', 'count', 'prev', 'page', 'next', 'skip'] //自定义分页布局
+			  //,curr: 5 //设定初始在第 5 页
+			  ,groups: 1 //只显示 1 个连续页码
+			  ,first: false //不显示首页
+			  ,last: false //不显示尾页
+			 
+			}
+			,cols: [[
+			  {field:'电表', width:165, title: '电表'}
+			  ,{field:'对应的用户', width:165, title: '对应的用户'}
+			  ,{field:'用电量', width:165, title: '用电量',sort: true}
+			  ,{field:'度数', width:165, title: '度数',sort: true}
+			  ,{field:'电费', width:165, title: '电费',sort: true}
+			]]
+			
+		  });
+	});
+</script>
+</body>
+</html>

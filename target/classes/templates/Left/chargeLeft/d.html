@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>收费第二层菜单</title>
+<link rel="stylesheet" href="/Meter/layui/css/layui.css"  media="all" />
+<link rel="stylesheet" type="text/css" href="/Meter/jquery-easyui/themes/default/easyui.css" />
+<link rel="stylesheet" type="text/css" href="/Meter/jquery-easyui/themes/icon.css" />
+<link rel="stylesheet" type="text/css" href="/Meter/jquery-easyui/demo/demo.css" />
+<script src="/Meter/jquery-easyui/jquery.min.js" charset="utf-8"></script>
+<script src="/Meter/jquery-easyui/jquery.easyui.min.js" charset="utf-8"></script>
+<script src="/Meter/layui/layui.js" charset="utf-8"></script>
+<script src="/Meter/js/jquery.js" charset="utf-8"></script>
+<style>
+	html,body{width:98.9%;height:96%;margin:0%}
+	body{background:#FFFFFF}
+	#top{width:98%;height:9%;background:#FFFFFF;margin-top:1%;margin-left:1%;margin-right:1%;float:top}
+	#buttom{width:98%;height:87%;background:#FFFFFF;margin-buttom:2%;margin-left:1%;margin-right:1%;float:buttom}
+</style>
+	<script>	
+		function ad(){
+			$("#query").window("open");
+		}
+	</script>
+</head>
+<body>
+	<div id="top">
+		<table style="margin:1%;margin-left:20%">
+			<tr>
+				<th><input type="image" src="/Meter/images/新增.png" onclick="ad()"></input></th>
+				<th>
+					<form class="layui-form" action="" style="width:80%;margin-left:80%;">
+							<div class="layui-inline">
+								<div class="layui-inline">
+									<select name="modules" lay-verify="required" lay-search="" style="margin-left:10px">
+										<option value="">查询</option>
+										<option value="1">单费率</option>
+										<option value="2">阶梯</option>
+										<option value="3">水价</option>
+									</select>
+								</div>
+							</div>
+						</form>
+				</th>
+			</tr>
+		</table>
+	</div>
+	<div id="buttom">
+		<table id="demo" lay-filter="test" ></table>
+	</div>
+	
+	<div id="query" class="easyui-window" title="修改内容"  style="width:700px;height:800px;padding:5px;"
+			 data-options="iconCls:'icon-save',closed:true,modal:true,minimizable:false,maximizable:false,closable:false,collapsible:true">
+		
+	</div>
+	<script>
+		layui.use(['table','form','laydate'], function(){
+			//输入框
+			var form = layui.form;
+			
+			//年月范围框
+		var laydate = layui.laydate;
+			  //国际版
+			  laydate.render({
+				elem: '#test1s'
+			  });
+			    //国际版
+			  laydate.render({
+				elem: '#test2s'
+			  });
+			  
+			  
+		var table = layui.table;
+		  //第一个实例
+		  table.render({
+			elem: '#demo'
+			,height: 'full'
+			,page: true //开启分页
+			,cellMinWidth:100
+			,minWidth: 100
+			,limit: 20
+			,size: 'sm'
+			,data:[{id:"联合广场管理处",username:"联合广场管理处",sex:"联合广场A座",city:"A1107",sign:"127.38",a:"A1107-Z",b:"深圳市金安盛世投资有限公司",c:"单位租户",d:"电费",f:"电费(1.5)",e:"蒋璐"},{id:"联合广场管理处",username:"联合广场管理处",sex:"联合广场A座",city:"A1107",sign:"127.38",a:"A1107-Z",b:"深圳市金安盛世投资有限公司",c:"单位租户",d:"电费",f:"电费(1.5)",e:"蒋璐"},{id:"联合广场管理处",username:"联合广场管理处",sex:"联合广场A座",city:"A1107",sign:"127.38",a:"A1107-Z",b:"深圳市金安盛世投资有限公司",c:"单位租户",d:"电费",f:"电费(1.5)",e:"蒋璐"},{id:"联合广场管理处",username:"联合广场管理处",sex:"联合广场A座",city:"A1107",sign:"127.38",a:"A1107-Z",b:"深圳市金安盛世投资有限公司",c:"单位租户",d:"电费",f:"电费(1.5)",e:"蒋璐"},{id:"联合广场管理处",username:"联合广场管理处",sex:"联合广场A座",city:"A1107",sign:"127.38",a:"A1107-Z",b:"深圳市金安盛世投资有限公司",c:"单位租户",d:"电费",f:"电费(1.5)",e:"蒋璐"},{id:"联合广场管理处",username:"联合广场管理处",sex:"联合广场A座",city:"A1107",sign:"127.38",a:"A1107-Z",b:"深圳市金安盛世投资有限公司",c:"单位租户",d:"电费",f:"电费(1.5)",e:"蒋璐"},{id:"联合广场管理处",username:"联合广场管理处",sex:"联合广场A座",city:"A1107",sign:"127.38",a:"A1107-Z",b:"深圳市金安盛世投资有限公司",c:"单位租户",d:"电费",f:"电费(1.5)",e:"蒋璐"},{id:"联合广场管理处",username:"联合广场管理处",sex:"联合广场A座",city:"A1107",sign:"127.38",a:"A1107-Z",b:"深圳市金安盛世投资有限公司",c:"单位租户",d:"电费",f:"电费(1.5)",e:"蒋璐"},{id:"联合广场管理处",username:"联合广场管理处",sex:"联合广场A座",city:"A1107",sign:"127.38",a:"A1107-Z",b:"深圳市金安盛世投资有限公司",c:"单位租户",d:"电费",f:"电费(1.5)",e:"蒋璐"},{id:"联合广场管理处",username:"联合广场管理处",sex:"联合广场A座",city:"A1107",sign:"127.38",a:"A1107-Z",b:"深圳市金安盛世投资有限公司",c:"单位租户",d:"电费",f:"电费(1.5)",e:"蒋璐"},{id:"联合广场管理处",username:"联合广场管理处",sex:"联合广场A座",city:"A1107",sign:"127.38",a:"A1107-Z",b:"深圳市金安盛世投资有限公司",c:"单位租户",d:"电费",f:"电费(1.5)",e:"蒋璐"},{id:"联合广场管理处",username:"联合广场管理处",sex:"联合广场A座",city:"A1107",sign:"127.38",a:"A1107-Z",b:"深圳市金安盛世投资有限公司",c:"单位租户",d:"电费",f:"电费(1.5)",e:"蒋璐"},{id:"联合广场管理处",username:"联合广场管理处",sex:"联合广场A座",city:"A1107",sign:"127.38",a:"A1107-Z",b:"深圳市金安盛世投资有限公司",c:"单位租户",d:"电费",f:"电费(1.5)",e:"蒋璐"},{id:"联合广场管理处",username:"联合广场管理处",sex:"联合广场A座",city:"A1107",sign:"127.38",a:"A1107-Z",b:"深圳市金安盛世投资有限公司",c:"单位租户",d:"电费",f:"电费(1.5)",e:"蒋璐"},{id:"联合广场管理处",username:"联合广场管理处",sex:"联合广场A座",city:"A1107",sign:"127.38",a:"A1107-Z",b:"深圳市金安盛世投资有限公司",c:"单位租户",d:"电费",f:"电费(1.5)",e:"蒋璐"},{id:"联合广场管理处",username:"联合广场管理处",sex:"联合广场A座",city:"A1107",sign:"127.38",a:"A1107-Z",b:"深圳市金安盛世投资有限公司",c:"单位租户",d:"电费",f:"电费(1.5)",e:"蒋璐"},{id:"联合广场管理处",username:"联合广场管理处",sex:"联合广场A座",city:"A1107",sign:"127.38",a:"A1107-Z",b:"深圳市金安盛世投资有限公司",c:"单位租户",d:"电费",f:"电费(1.5)",e:"蒋璐"},{id:"联合广场管理处",username:"联合广场管理处",sex:"联合广场A座",city:"A1107",sign:"127.38",a:"A1107-Z",b:"深圳市金安盛世投资有限公司",c:"单位租户",d:"电费",f:"电费(1.5)",e:"蒋璐"},{id:"联合广场管理处",username:"联合广场管理处",sex:"联合广场A座",city:"A1107",sign:"127.38",a:"A1107-Z",b:"深圳市金安盛世投资有限公司",c:"单位租户",d:"电费",f:"电费(1.5)",e:"蒋璐"},{id:"联合广场管理处",username:"联合广场管理处",sex:"联合广场A座",city:"A1107",sign:"129",a:"A1107-Z",b:"深圳市金安盛世投资有限公司",c:"单位租户",d:"电费",f:"电费(1.5)",e:"蒋璐"}]
+			,cols: [[ //表头
+			  {field: 'id', title: '组织机构',align:"center",}
+			  ,{field: 'username', title: '管理区',align:"center",height:200}
+			  ,{field: 'sex', title: '楼宇',align:"center"}
+			  ,{field: 'city', title: '房间代码',align:"center"} 
+			  ,{field: 'sign', title: '房间面加',align:"center",sort:true}
+			  ,{field: 'a', title: '客户编号',align:"center"}
+			  ,{field: 'b', title: '客户名称',align:"center"}
+			  ,{field: 'c', title: '客户类别',align:"center"}
+			  ,{field: 'd', title: '收费项目名称',align:"center"}
+			  ,{field: 'f', title: '收费标准名称',align:"center",sort:true}
+			  ,{field: 'e', title: '添加人',align:"center"}
+			  ,{field: 'g', title:'操作',align:"center"}
+			]]
+		  });
+		});
+	</script>
+</body>
+</html>

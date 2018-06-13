@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>房间仪表</title>
+<link rel="stylesheet" href="../../layui/css/layui.css"  media="all">
+<link rel="stylesheet" type="text/css" href="../../jquery-easyui/themes/default/easyui.css">
+<link rel="stylesheet" type="text/css" href="../../jquery-easyui/themes/icon.css">
+<link rel="stylesheet" type="text/css" href="../../jquery-easyui/demo/demo.css">
+<script type="text/javascript" src="../../jquery-easyui/jquery.min.js"></script>
+<script type="text/javascript" src="../../jquery-easyui/jquery.easyui.min.js"></script>
+<script src="../../layui/layui.js" charset="utf-8"></script>
+	<style>
+		html,body{width:100%;height:100%}
+		body{background:#B0E0E6}
+		#top{width:100%;height:10%;background:#FFFFFF}
+		#buttom{width:100%;height:100%;background:#FFFFFF}
+	</style>
+</head>
+<body>
+	<div id="top">
+		<table  style="width:30%;height:100%">
+			<tr>
+				<th><font size="4">查询日期：</th>
+				<th><input type="text" class="layui-input" id="test3" placeholder="yyyy-MM" style="width:80%"></th>
+				<th><input type="image" src="../../images/增加.png" onclick="$('#w').window('open')"></input></th>
+			</tr>
+		</table>
+	</div>
+	<div id="buttom">
+		<table id="demo" lay-filter="test"></table>
+		
+		<script type="text/html" id="checkboxTpl">
+		  <!-- 这里的 checked 的状态只是演示 -->
+		  <input type="checkbox" name="lock" value="{{d.id}}" title="是" lay-filter="lockDemo" {{ d.id == 10006 ? 'checked' : '' }}>
+		</script>
+		<script type="text/html" id="checkboxTp2">
+		  <!-- 这里的 checked 的状态只是演示 -->
+		  <input type="checkbox" name="lock" value="{{d.id}}" title="是" lay-filter="lockDemo2" {{ d.id == 10006 ? 'checked' : '' }}>
+		</script>
+		<script type="text/html" id="checkboxTp3">
+		  <!-- 这里的 checked 的状态只是演示 -->
+		  <input type="checkbox" name="lock" value="{{d.id}}" title="是" lay-filter="lockDemo3" {{ d.id == 10006 ? 'checked' : '' }}>
+		</script>
+		
+		<script type="text/html" id="checkboxTp4">
+		  <!-- 这里的 checked 的状态只是演示 -->
+		  <a class="layui-btn layui-btn-xs" lay-event="edit" onclick="$('#w1').window('open')"	>编辑</a>
+		  <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+		</script>
+	</div>
+	
+	<div id="w" class="easyui-window" title="增加房间仪表" data-options="modal:true,closed:true,iconCls:'icon-save'" style="width:60%;height:60%;padding:10px;">
+		<table border="1" style="width:100%;height:100%">
+			<tr>
+				<th align="center"><font size="4">代码：</font></th>
+				<th align="center"><input type="text" name="title" required lay-verify="required" placeholder="请输入代码" autocomplete="off" class="layui-input" style="width:50%"></th>
+				<th align="center"><font size="4">仪表种类：</font></th>
+				<th align="center"><input type="text" name="title" required lay-verify="required" placeholder="请输入仪表种类" autocomplete="off" class="layui-input" style="width:50%"></th>
+			</tr>
+			<tr>
+				<th align="center"><font size="4">房间：</font></th>
+				<th align="center"><input type="text" name="title" required lay-verify="required" placeholder="请输入代码" autocomplete="off" class="layui-input" style="width:50%"></th>
+				<th align="center"><font size="4">倍率：</font></th>
+				<th align="center"><input type="text" name="title" required lay-verify="required" placeholder="请输入代码" autocomplete="off" class="layui-input" style="width:50%"></th>
+			</tr>
+			<tr>
+				<th align="center"><font size="4">回程：</font></th>
+				<th align="center"><input type="text" name="title" required lay-verify="required" placeholder="请输入代码" autocomplete="off" class="layui-input" style="width:50%"></th>
+				<th align="center"><font size="4">损耗率：</font></th>
+				<th align="center"><input type="text" name="title" required lay-verify="required" placeholder="请输入代码" autocomplete="off" class="layui-input" style="width:50%"></th>
+			</tr>
+			<tr>
+				<th align="center"><font size="4">上次度数日期：</font></th>
+				<th align="center"><input id="da" type="text" class="layui-input" style="width:50%"></th>
+				<th align="center"><font size="4">上次读数：</font></th>
+				<th align="center"><input type="text" name="title" required lay-verify="required" placeholder="请输入代码" autocomplete="off" class="layui-input" style="width:50%"></th>
+			</tr>
+			<tr>
+				<th align="center"><font size="4">总表：</font></th>
+				<th align="center"><input type="text" name="title" required lay-verify="required" placeholder="请输入代码" autocomplete="off" class="layui-input" style="width:50%"></th>
+				
+			</tr>
+		</table>
+	</div>
+<script>
+	layui.use(['laydate','table'], function(){
+		var laydate = layui.laydate;
+		//年月选择器
+	    laydate.render({
+		 elem: '#test3'
+		 ,type: 'month'
+	   });
+	   
+	    //常规用法
+		  laydate.render({
+			elem: '#da'
+		  });
+	   
+	   var table = layui.table
+		,form = layui.form;
+	   	  //第一个实例
+		  table.render({
+			elem: '#demo'
+			,height: 'full+10'
+			,cellMinWidth:120
+			,height:750
+			,minWidth: 120
+			,size: 'ls'
+			,data:[{id:"03",username:"3号电表箱",b:"联合广场管理处"}]
+			,cols: [[ //表头
+				{field: 'id', title: '代码',align:"center"}
+				,{field: 'username', title: '仪表种类',align:"center"}
+				,{field: 'sex', title: '表号',align:"center"}
+				,{field: 'a', title: '房间',align:"center"}
+				,{field: 'aa', title: '客户编号',align:"center"}
+				,{field: 'b', title: '客户名称',align:"center"}
+				,{field: 'bb', title: '倍率',align:"center"}
+				,{field: 'c', title: '回程',align:"center"}
+				,{field: 'cc', title: '损耗率',align:"center"}
+				,{field: 'e', title: '上次读数',align:"center"}
+				,{field: 'ee', title: '是否总表',align:"center",templet: '#checkboxTp2', unresize: true}
+				,{field: 'd', title: '是否不需要抄表',align:"center",templet: '#checkboxTpl', unresize: true,width:130}
+				,{field: 'dd', title: '管理区',align:"center"}		
+				,{field: 'e', title: '组织机构',align:"center"}		
+				,{field: 'ee', title: '备注',align:"center"}		
+				,{field: 'f', title: '仪表地址',align:"center"}
+				,{field: 'ff', title: '计算机地址',align:"center"}
+				,{field: 'g', title: '是否不计费',align:"center",templet: '#checkboxTp3', unresize: true}
+				,{field: 'gg', title: '仪表箱代码',align:"center"}
+				,{field: 'h', title: '序号',align:"center"}
+				,{field: 'h', title: '出厂铭牌',align:"center"}
+				,{field: 'f', title: '操作',align:"center",templet: '#checkboxTp4', unresize: true}
+			]]
+			,page: true
+		  });
+		  //监听是否抄表操作
+		  form.on('checkbox(lockDemo)', function(obj){
+			layer.tips(this.value + ' ' + this.name + '：'+ obj.elem.checked, obj.othis);
+		  });
+		  //监听是否主表操作
+		  form.on('checkbox(lockDemo2)', function(obj){
+			layer.tips(this.value + ' ' + this.name + '：'+ obj.elem.checked, obj.othis);
+		  });
+		  //监听是否不计费操作
+		  form.on('checkbox(lockDemo3)', function(obj){
+			layer.tips(this.value + ' ' + this.name + '：'+ obj.elem.checked, obj.othis);
+		  });
+	});
+</script>
+</body>
+</html>

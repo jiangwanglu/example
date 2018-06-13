@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta charset="utf-8" />
+	<title>用电监测</title>
+	<meta name="renderer" content="webkit|ie-comp|ie-stand" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+	<link rel="stylesheet" href="/Meter/layui/css/layui.css"  media="all" />
+	<script src="/Meter/layui/layui.js" charset="utf-8"></script>
+	<script src="/Meter/js/echarts.js" charset="utf-8"></script>
+	<script src="/Meter/js/jquery.js" charset="utf-8"></script>
+	<style>
+		html,body{width:100%;height:100%}
+		body{background:#B0E0E6}
+		#left{width:50%;height:100%;float:left}
+		#lefttop{width:100%;height:12%;background:#FFFFFF;margin:1%}
+		#leftbuttom{width:100%;height:85%;background:#FFFFFF;margin:1%}
+		#right{width:47%;height:96%;float:right;background:#FFFFFF;margin-left:1%;margin-top:1%;margin-right:1%}
+	</style>
+</head>
+<body>
+	<div id="left">
+		<div id="lefttop">
+			<div id="ll" style="width:50%;height:100%;float:left;">
+				<div class="layui-form">
+					<div class="layui-form-item">
+						<div class="layui-inline">
+							<label class="layui-form-label" style="margin-top:10%">选择月份：</label>
+							<div class="layui-input-inline" >
+								<input type="text" class="layui-input" id="test3" placeholder="点击选择月份" style="margin-top:16%" />
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="rr" style="width:50%;height:100%;float:right">
+				<button class="layui-btn layui-btn-radius" style="margin-top:7%">进行查询</button>
+			</div>
+		</div>
+		<div id="leftbuttom">
+			<table class="layui-hide" id="test"></table>
+		</div>
+	</div>
+	<div id="right">
+		<table class="layui-hide" id="test1"></table>
+	</div>
+	<script>
+		layui.use(['laydate', 'table'],function(){
+		  var laydate = layui.laydate;
+		//年月选择器
+		  laydate.render({
+			elem: '#test3'
+			,type: 'month'
+		  });
+		  //表格
+		   var table = layui.table
+			,form = layui.form;
+		    table.render({
+				elem: '#test'
+				,url:'/demo/table/user/'
+				,cellMinWidth: 50
+				,limit:10
+				,height: 700
+				,loading:true
+				,cols: [[
+				  {type:'numbers'}
+				  ,{field:'id', title:'ID', width:100, unresize: true, sort: true}
+				  ,{field:'username', title:'用户名', templet: '#usernameTpl'}
+				  ,{field:'city', title:'用电量'}
+				  ,{field:'wealth', title: '电费', minWidth:120, }
+				  ,{field:'sex', title:'平均值', width:85, templet: '#switchTpl', unresize: true}
+				]]
+				,page: true
+			  })
+			  
+			  //表格
+		   var table1 = layui.table
+			,form = layui.form;
+		    table.render({
+				elem: '#test1'
+				,url:'/demo/table/user/'
+				,cellMinWidth: 50
+				,limit:10
+				,height: 700
+				,loading:true
+				,cols: [[
+				  {type:'numbers'}
+				  ,{field:'id', title:'ID', width:100, unresize: true, sort: true}
+				  ,{field:'username', title:'用户名', templet: '#usernameTpl'}
+				  ,{field:'city', title:'用电量'}
+				  ,{field:'wealth', title: '超出', minWidth:120, }
+				  ,{field:'sex', title:'审核', width:85, templet: '#switchTpl', unresize: true}
+				]]
+				,page: true
+			  })
+		});
+	</script>
+</body>
+</html>

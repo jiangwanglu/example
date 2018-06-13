@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head lang="en">
+<title>抄表登录</title>
+<link href="/Meter/login/css/style.css" rel="stylesheet" type="text/css" media="all"/>
+<link rel="stylesheet" href="/Meter/loginimg/css/style.css" />
+<meta charset="UTF-8"/>
+</head>
+<body>
+<!--header start here-->
+<div class="login-form">
+			<div class="content">
+			  <div class="photo-cube__wrapper">
+				<input type="radio" id="1" name="cube" checked="true" class="photo-cube__control"/>
+				<input type="radio" id="2" name="cube" class="photo-cube__control"/>
+				<input type="radio" id="3" name="cube" class="photo-cube__control"/>
+				<input type="radio" id="4" name="cube" class="photo-cube__control"/>
+				<input type="radio" id="5" name="cube" class="photo-cube__control"/>
+				<input type="radio" id="6" name="cube" class="photo-cube__control"/>
+				<div class="photo-cube">
+				  <div class="photo-cube__panel"></div>
+				  <div class="photo-cube__panel"></div>
+				  <div class="photo-cube__panel"></div>
+				  <div class="photo-cube__panel"></div>
+				  <div class="photo-cube__panel"></div>
+				  <div class="photo-cube__panel"></div>
+				</div>
+				<div class="photo-cube__actions--left">
+				  <label for="6" class="photo-cube__action"></label>
+				  <label for="1" class="photo-cube__action"></label>
+				  <label for="2" class="photo-cube__action"></label>
+				  <label for="3" class="photo-cube__action"></label>
+				  <label for="4" class="photo-cube__action"></label>
+				  <label for="5" class="photo-cube__action"></label>
+				</div>
+				<div class="photo-cube__actions--right">
+				  <label for="2" class="photo-cube__action"></label>
+				  <label for="3" class="photo-cube__action"></label>
+				  <label for="4" class="photo-cube__action"></label>
+				  <label for="5" class="photo-cube__action"></label>
+				  <label for="6" class="photo-cube__action"></label>
+				  <label for="1" class="photo-cube__action"></label>
+				</div>
+				<div class="photo-cube__indicators">
+				  <label for="1" class="photo-cube__indicator"></label>
+				  <label for="2" class="photo-cube__indicator"></label>
+				  <label for="3" class="photo-cube__indicator"></label>
+				  <label for="4" class="photo-cube__indicator"></label>
+				  <label for="5" class="photo-cube__indicator"></label>
+				  <label for="6" class="photo-cube__indicator"></label>
+				</div>
+			  </div>
+			</div>
+			<h1>抄表系统登录</h1>
+			<div class="login-top">
+			<form action="login" method="get">
+				<div class="login-ic" style="border-radius:30px" >
+					<i ></i>
+					<input type="text"  value="账号" name="userName" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = 'User name';}"/>
+					<div class="clear"> </div>
+				</div>
+				<div class="login-ic" style="border-radius:30px">
+					<i class="icon"></i>
+					<input type="password" value="密码" name="password"  onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = 'password';}" />
+					<div class="clear"> </div>
+				</div>
+			
+				<div class="log-bwn">
+					<input type="submit"  value="登陆" style="border-radius:30px" />
+				</div>
+			</form>
+		</div>
+</div>		
+</body>
+</html>

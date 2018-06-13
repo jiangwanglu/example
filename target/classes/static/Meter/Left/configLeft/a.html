@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>收费第二层菜单</title>
+<link rel="stylesheet" href="../../layui/css/layui.css"  media="all">
+<script src="../../layui/layui.js" charset="utf-8"></script>
+<script src="../../js/jquery.js" charset="utf-8"></script>
+<script src="../../js/jquery-3.2.1.min.js" charset="utf-8"></script>
+<style>
+	html,body{width:100%;height:100%;margin:0}
+	body{background:#B0E0E6}
+	#top{width:98%;height:97%;margin:1%}
+	#left{width:19%;height:97%;background:#FFFFFF;float:left;margin:1%;}
+	#right{width:77%;height:97%;background:#FFFFFF;float:right;margin:1%}
+</style>
+</head>
+<body>
+	<div id="top">
+		<div id="left">
+			<ul id="demo"></ul>
+		</div>
+		<div id="right">
+			<table style="widht:100%;height:100%">
+				<tr>
+					<th><font size="9">&nbsp;平台在线人数：xxx&nbsp;&nbsp;&nbsp;</font></th>
+					<th><font size="9">&nbsp;业户接入点：xxx&nbsp;&nbsp;&nbsp;</font></th>
+				</tr>
+				<tr>
+					<th><font size="9">&nbsp;智能端口接入点：xxx&nbsp;&nbsp;&nbsp;</font></th>
+					<th><font size="9">&nbsp;平台数据扩量：xxx&nbsp;&nbsp;&nbsp;</font></th>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<script>
+		layui.use(['tree'],function(){
+			layui.tree({
+			  elem: '#demo' //传入元素选择器
+			  ,nodes: [{ //节点
+				name: '父节点1'
+				,children: [{
+				  name: '子节点11'
+				},{
+				  name: '子节点12'
+				}]
+			  },{
+				name: '父节点2（可以点左侧箭头，也可以双击标题）'
+				,children: [{
+				  name: '子节点21'
+				  ,children: [{
+					name: '子节点211'
+				  }]
+				}]
+			  }]
+			});
+		});
+	</script>
+</body>
+</html>
